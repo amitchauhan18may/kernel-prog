@@ -1,4 +1,6 @@
 " Don't try to be vi compatible
+highlight OverLength ctermbg=red ctermfg=white guibg=#59292
+match OverLength /\%81v.\+/
 set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below
@@ -16,7 +18,7 @@ filetype plugin indent on
 " let mapleader = ","
 
 " Security
-set modelines=0
+"set modelines=0
 
 " Show line numbers
 "set number
@@ -112,9 +114,9 @@ set autoindent      "Keep indentation from previous line
 set smartindent     "Automatically inserts indentation in some cases
 set cindent         "Like smartindent, but stricter and more customisable
 
-highlight ws ctermbg=red guibg=red
-match ws /\s\+$/
-autocmd BufWinEnter * match ws / \+$/
+"highlight ws ctermbg=red guibg=red
+"match ws /\s\+$/
+"autocmd BufWinEnter * match ws / \+$/
 
 
 fun! TrimWhitespace()
