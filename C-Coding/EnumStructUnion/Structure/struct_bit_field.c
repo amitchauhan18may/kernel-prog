@@ -22,6 +22,10 @@ int main () {
 
     struct optimize_date optimize_my_date = {
         .date  = 10,
+        //.date  = 1000,
+        /* Here we are demonstrating out of range value
+         * warning: large integer implicitly truncated to unsigned type
+         * O/P: In this case was 8*/
         .month = 2,
         .year  = 2018
     };
