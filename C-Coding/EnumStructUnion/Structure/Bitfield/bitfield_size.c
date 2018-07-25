@@ -24,9 +24,24 @@ struct bitfield3 {
     int littlefield2:1;
 };
 
+struct alligned_linklist {
+    char *p;
+    short s;
+    char c;
+};
+
+struct linklist {
+    char c;
+    char *p;
+    short s;
+};
+
 int main () {
     printf("Size of bitfield1: %lu-bytes\n", sizeof(struct bitfield1));
     printf("Size of bitfield2: %lu-bytes\n", sizeof(struct bitfield2));
     printf("Size of bitfield3: %lu-bytes\n", sizeof(struct bitfield3));
+    printf("Size of alligned_linklist: %lu-bytes\n",
+            sizeof(struct alligned_linklist));
+    printf("Size of linklist: %lu-bytes\n", sizeof(struct linklist));
     return 0;
 }
