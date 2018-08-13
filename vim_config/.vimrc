@@ -114,9 +114,9 @@ set autoindent      "Keep indentation from previous line
 set smartindent     "Automatically inserts indentation in some cases
 set cindent         "Like smartindent, but stricter and more customisable
 
-"highlight ws ctermbg=red guibg=red
-"match ws /\s\+$/
-"autocmd BufWinEnter * match ws / \+$/
+highlight ws ctermbg=yellow guibg=yellow
+match ws /\s\+$/
+autocmd BufWinEnter * match ws / \+$/
 
 
 fun! TrimWhitespace()
