@@ -14,7 +14,11 @@ int main( int argc, char **argv ) {
     int length, len[3],i = 0, wd[3];
     int fd;
     char buffer[BUF_LEN];
+<<<<<<< HEAD
     printf("SIZE OF struct inotify_event: %zu\n", sizeof(struct inotify_event));
+=======
+
+>>>>>>> f9c70987da9ff6fae17a326f898d95c6c8241a18
     /* Initialize Inotify*/
     fd= inotify_init();
     if (fd < 0) {
@@ -53,7 +57,11 @@ int main( int argc, char **argv ) {
             perror( "read\n" );
         }
 
+<<<<<<< HEAD
         event1 = ( struct inotify_event * ) &buffer[i];
+=======
+        event1 = ( struct inotify_event * ) &buffer[0];
+>>>>>>> f9c70987da9ff6fae17a326f898d95c6c8241a18
         event2 = ( struct inotify_event * ) &buffer[length];
         event3 = ( struct inotify_event * ) &buffer[event2->len + length];
 
@@ -130,7 +138,10 @@ int main( int argc, char **argv ) {
 
                 i += EVENT_SIZE + event3->len;
             }
+<<<<<<< HEAD
             bzero(buffer, BUF_LEN);
+=======
+>>>>>>> f9c70987da9ff6fae17a326f898d95c6c8241a18
     }
 
     /* Clean up*/
