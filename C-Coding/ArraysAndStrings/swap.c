@@ -8,8 +8,8 @@ void swap (char **str1, char **str2) {
 }
 
 int main () {
-    char *str1 = "Amit";
-    char *str2 = "Chauhan";
+    char *str2 = "Amit";
+    char *str1 = "Chauhan";
 
     printf("Str1: %s, Str2: %s \n", str1, str2);
     
