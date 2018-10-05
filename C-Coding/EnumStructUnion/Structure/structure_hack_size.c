@@ -3,7 +3,7 @@
 struct struct_a {
     int a;
     int b;
-    char arr[0];
+    char arr[];
 };
 
 /* In gcc, when we create an array of zero length,
