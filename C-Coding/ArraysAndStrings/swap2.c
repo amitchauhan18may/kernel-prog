@@ -6,10 +6,19 @@
 #include <string.h>
 
 void swap (char *str1, char *str2) {
-    char *temp = (char *) malloc((strlen(str1)+1) * sizeof(char));
-    strcpy(temp, str1);
-    strcpy(str1, str2);
-    strcpy(str2, temp);
+    char *temp = NULL;
+    int len = 0;
+    if (strlen(str1) > strlen(str2)) {
+        len = strlen(str1);
+        temp = (char *) malloc((strlen(str1)+1) * sizeof(char));
+    } else {
+        len = strlen(str2);
+        temp = (char *) malloc((strlen(str2)+1) * sizeof(char));
+    }
+    strncpy(temp, str2, len);
+    bzero(str2, strlen(str2));
+    strncpy(str2, str1, len);
+    strncpy(str1, temp, len);
     free(temp);
 
     return;
