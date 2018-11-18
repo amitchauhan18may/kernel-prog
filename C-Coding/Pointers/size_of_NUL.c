@@ -11,6 +11,7 @@
 int main (void) {
 
     printf("Size-of NUL: %ld\n", sizeof('\0'));
+    printf("Size-of empty string: %ld\n", sizeof(""));
 
     printf("space=%c\n", 0);
     printf("decimal of 0 = %d: %c\n", 0x30, 0x30);
