@@ -6,7 +6,7 @@ struct node {
     struct node *next;
 };
 
-void print_List (struct node *head) {
+void print_list (struct node *head) {
 
     struct node *temp = head;
 
@@ -20,7 +20,19 @@ void print_List (struct node *head) {
     return;
 }
 
-int main () {
+void push_on_front (struct node **head, int data) {
+
+    struct node *new  = (struct node *) malloc(sizeof(struct node));
+
+    new->data = data;
+    new->next = *head;
+
+    *head = new;
+
+    return;
+}
+
+int main (void) {
     struct node *head   = NULL;
     struct node *second = NULL;
     struct node *third  = NULL;
@@ -38,7 +50,11 @@ int main () {
     third->data = 3;
     third->next = NULL;
 
-    print_List(head);
+    print_list(head);
+
+    push_on_front(&head, 15);
+
+    print_list(head);
 
     return 0;
 }
