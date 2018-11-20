@@ -18,6 +18,7 @@ void print_list (struct node *head) {
     printf("NULL\n");
 
     return;
+
 }
 
 void push_on_front (struct node **head, int data) {
@@ -29,6 +30,7 @@ void push_on_front (struct node **head, int data) {
     *head = new;
 
     return;
+
 }
 
 void push_on_end (struct node **head, int data) {
@@ -51,6 +53,7 @@ void push_on_end (struct node **head, int data) {
     temp->next = new;
 
     return;
+
 }
 
 void push_on_nth (struct node **head, int data, int pos) {
@@ -81,9 +84,47 @@ void push_on_nth (struct node **head, int data, int pos) {
     new->next = temp;
 
     return;
+
+}
+
+void pop_on_position (struct node **head, int pos) {
+
+    struct node *temp = *head;
+    struct node *prev;
+
+    if (NULL == *head) {
+        printf("Empty LinkList !\nNothing to remove\n");
+        return;
+    }
+
+
+    if (0 == pos) {
+        prev = temp;
+        temp = temp->next;
+        *head = temp;
+        free(prev);
+        return;
+    }
+
+    while (NULL != temp && pos--) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (NULL == temp) {
+        printf("No pop-node for this position\n");
+        return;
+    }
+
+    prev->next = temp->next;
+    free(temp);
+
+    return;
+
 }
 
 int main (void) {
+
     struct node *head   = NULL;
     struct node *second = NULL;
     struct node *third  = NULL;
@@ -103,14 +144,18 @@ int main (void) {
 
     print_list(head);
 
-    push_on_front(&head, 15);
+    push_on_front(&head, 4);
     print_list(head);
 
     push_on_end(&head, 25);
     print_list(head);
 
-    push_on_nth (&head, 112, 9);
+    push_on_nth (&head, 112, 3);
+    print_list(head);
+
+    pop_on_position(&head, 8);
     print_list(head);
 
     return 0;
+
 }
