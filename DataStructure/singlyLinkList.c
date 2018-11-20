@@ -8,6 +8,8 @@ struct node {
 
 void print_list (struct node *head) {
 
+    printf("Printing LinkList\n");
+
     struct node *temp = head;
 
     while (NULL != temp) {
@@ -23,6 +25,8 @@ void print_list (struct node *head) {
 
 void push_on_front (struct node **head, int data) {
 
+    printf("Pushing node at Front with Data:[%d]\n", data);
+
     struct node *new  = (struct node *) malloc(sizeof(struct node));
 
     new->data = data;
@@ -34,6 +38,8 @@ void push_on_front (struct node **head, int data) {
 }
 
 void push_on_end (struct node **head, int data) {
+
+    printf("Pushing node at End with Data:[%d]\n", data);
 
     struct node *temp = *head;
     struct node *new  = (struct node *) malloc(sizeof(struct node));
@@ -57,6 +63,8 @@ void push_on_end (struct node **head, int data) {
 }
 
 void push_on_nth (struct node **head, int data, int pos) {
+
+    printf("Pushing node at Position:[%d] | Data:[%d]\n", pos, data);
 
     if (NULL == *head) {
         printf("Empty LinkLIst");
@@ -89,6 +97,8 @@ void push_on_nth (struct node **head, int data, int pos) {
 
 void pop_on_position (struct node **head, int pos) {
 
+    printf("Poping node at position: [%d]\n", pos);
+
     struct node *temp = *head;
     struct node *prev;
 
@@ -99,10 +109,8 @@ void pop_on_position (struct node **head, int pos) {
 
 
     if (0 == pos) {
-        prev = temp;
-        temp = temp->next;
-        *head = temp;
-        free(prev);
+        *head = temp->next;
+        free(temp);
         return;
     }
 
@@ -112,7 +120,7 @@ void pop_on_position (struct node **head, int pos) {
     }
 
     if (NULL == temp) {
-        printf("No pop-node for this position\n");
+        printf("No pop-node present for this position\n");
         return;
     }
 
@@ -153,7 +161,7 @@ int main (void) {
     push_on_nth (&head, 112, 3);
     print_list(head);
 
-    pop_on_position(&head, 8);
+    pop_on_position(&head, 0);
     print_list(head);
 
     return 0;
