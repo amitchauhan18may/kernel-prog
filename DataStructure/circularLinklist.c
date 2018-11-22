@@ -86,6 +86,41 @@ void pust_at_end_circular_list (struct node **end, int data) {
 
 }
 
+void pop_key_from_circular_list (struct node *head, int key) {
+
+    printf("Poping DATA:[%d]\n", key);
+
+    if (NULL == head) {
+        printf("Empty Circular List!\n");
+        return;
+    }
+
+    struct node *temp = head, *prev;
+
+    if (key == head->data) {
+        head = temp->next;
+        free(temp);
+        return;
+    }
+
+    while ((head != temp->next) && (key != temp->data)) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == head) {
+        printf("No key:[%d] found to delete in Circular List\n", key);
+        return;
+    }
+
+    prev->next = temp->next;
+
+    free(temp);
+
+    return;
+
+}
+
 int main (void) {
 
     struct node *end = NULL;
@@ -106,6 +141,9 @@ int main (void) {
     print_circular_list(end);
 
     pust_at_end_circular_list(&end, 5);
+    print_circular_list(end);
+
+    pop_key_from_circular_list(end->next, 2);
     print_circular_list(end);
 
     return 0;
