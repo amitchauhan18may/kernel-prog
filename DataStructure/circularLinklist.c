@@ -28,7 +28,7 @@ void print_circular_list (struct node *end) {
 
 void push_to_empty_circular_list (struct node **end, int data) {
 
-    printf("Adding Data To Empty Circular List DATA:[%d]\n", data);
+    printf("Adding To EmptyList DATA:[%d]\n", data);
 
     if (NULL != *end) {
         printf("It's not a EmptyCircularList! \nReturning!\n");
@@ -47,7 +47,7 @@ void push_to_empty_circular_list (struct node **end, int data) {
 
 void pust_at_start_circular_list (struct node **end, int data) {
 
-    printf("Adding data at start of CircularList DATA:[%d]\n", data);
+    printf("Adding at start DATA:[%d]\n", data);
 
     if (NULL == *end) {
         printf("Empty CircularList Found!\n");
@@ -67,7 +67,7 @@ void pust_at_start_circular_list (struct node **end, int data) {
 
 void pust_at_end_circular_list (struct node **end, int data) {
 
-    printf("Adding data at end of CircularList DATA:[%d]\n", data);
+    printf("Adding at end DATA:[%d]\n", data);
 
     if (NULL == *end) {
         printf("Empty CircularList Found!\n");
@@ -98,8 +98,16 @@ void pop_key_from_circular_list (struct node *head, int key) {
     struct node *temp = head, *prev;
 
     if (key == head->data) {
+        while(head != temp->next) {
+            prev = temp;
+            temp = temp->next;
+        }
+        
+        prev = temp->next;
+        temp->next = head->next;
         head = temp->next;
-        free(temp);
+        free(prev);
+
         return;
     }
 
@@ -144,6 +152,9 @@ int main (void) {
     print_circular_list(end);
 
     pop_key_from_circular_list(end->next, 2);
+    print_circular_list(end);
+
+    pop_key_from_circular_list(end->next, 4);
     print_circular_list(end);
 
     return 0;
