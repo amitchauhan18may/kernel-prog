@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int xstrcpy (char *dest, char *source) {
+int xstrcpy (char *dest, const char *source) {
 
     while (*source != '\0') {
         *dest = *source;
