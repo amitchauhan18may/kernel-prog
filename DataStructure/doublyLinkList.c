@@ -100,6 +100,58 @@ void push_on_front (struct node **head, int data) {
 }
 
 
+void pop_dulbly_list (struct node **head, struct node *pop_node) {
+
+    if ((NULL == *head) || (NULL == pop_node)) {
+        printf("Either Head || Pop_Node is NULL!\n");
+        return;
+    }
+
+    printf("Poping DATA[%d]\n", pop_node->data);
+
+    if (*head == pop_node)
+        *head = pop_node->next;
+
+    if (NULL != pop_node->next)
+        pop_node->next->prev = pop_node->prev;
+
+    if (NULL != pop_node->prev)
+        pop_node->prev->next = pop_node->next;
+
+    free(pop_node);
+
+    return;
+
+}
+
+
+void pop_nth_node (struct node **head, int pos) {
+
+    struct node *current = *head;
+    int i;
+
+    printf("\nPoping at position [%d]\n", pos);
+
+    if (NULL == *head || pos <= 0) {
+        printf("Please pass position greater than ZERO or Not-Null HEAD\n");
+        return;
+    }
+
+    for (i = 1; (NULL != current) && (i < pos); i++)
+        current = current->next;
+
+    if (NULL == current) {
+        printf("No Position: %d found\n", pos);
+        return;
+    }
+
+    pop_dulbly_list(head, current);
+
+    return;
+
+}
+
+
 int main (void) {
 
     struct node *head = NULL;
@@ -111,6 +163,9 @@ int main (void) {
     print_doubly_list(head);
 
     push_on_front(&head, 3);
+    print_doubly_list(head);
+
+    pop_nth_node(&head, 1);
     print_doubly_list(head);
 
     return 0;
