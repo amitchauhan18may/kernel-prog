@@ -7,6 +7,46 @@ struct node {
     struct node *prev;
 };
 
+void pop_key (struct node **head, int key) {
+
+    printf("\nPoping Key[%d]\n", key);
+
+    struct node *current = *head, *prev;
+    struct node *last = (*head)->prev;
+
+    if ((*head)->data == key) {
+        last->next = (*head)->next;
+        *head = (*head)->next;
+        (*head)->prev = last;
+        free(current);
+        return;
+    }
+
+    if (last->data == key) {
+        current = last;
+        current->prev->next = *head;
+        (*head)->prev = current->prev;
+        free(current);
+        return;
+    }
+
+    while (current->data != key) {
+       prev = current;
+       current = current->next;
+       if (current == last) {
+           printf("No Specified key [%d] found!\n", key);
+           return;
+       }
+    }
+
+    current->next->prev = prev;
+    prev->next = current->next;
+
+    free(current);
+
+    return;
+
+}
 
 void push_on_position (struct node **head, int data, int pos) {
 
@@ -149,7 +189,10 @@ int main (void) {
     push_on_end(&head, 40);
     print_list(head);
 
-    push_on_position(&head, 120, 9);
+    push_on_position(&head, 120, 8);
+    print_list(head);
+
+    pop_key(&head, 30);
     print_list(head);
 
     return 0;
