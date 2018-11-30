@@ -13,7 +13,8 @@ int main (void) {
     static int g_val = 5;
     while (--g_val) {
         func();
-        printf("%d\n", g_val);
+        printf("Main: %d\n", g_val);
+        printf("Main: %p\n", &g_val);
     }
 
     return 0;
@@ -23,6 +24,7 @@ int main (void) {
 void func (void) {
 
     printf("func: %d\n", g_val);
+    printf("func: %p\n", &g_val);
     return;
 
 }
