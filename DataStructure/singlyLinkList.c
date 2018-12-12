@@ -131,6 +131,54 @@ void pop_on_position (struct node **head, int pos) {
 
 }
 
+
+void reverse_linklist (struct node **head) {
+
+    printf("Reversing LinkList\n");
+
+    struct node *prev = NULL;
+    struct node *next = NULL;
+    struct node *current = *head;
+
+    while (NULL != current) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    *head = prev;
+
+    return;
+
+}
+
+void recursive_reverse_linklist (struct node **head) {
+
+    if (NULL == *head) {
+        printf("Empty LinkList\n");
+        return;
+    }
+
+    struct node *first = *head;
+    struct node *rest  = first->next;
+
+    if (NULL == rest) {
+        printf("Reversing LinkList using recursion\n");
+        return;
+    }
+
+    recursive_reverse_linklist(&rest);
+
+    first->next->next = first;
+    first->next = NULL;
+
+    *head = rest;
+
+    return;
+
+}
+
 int main (void) {
 
     struct node *head   = NULL;
@@ -162,6 +210,12 @@ int main (void) {
     print_list(head);
 
     pop_on_position(&head, 0);
+    print_list(head);
+
+    reverse_linklist(&head);
+    print_list(head);
+
+    recursive_reverse_linklist(&head);
     print_list(head);
 
     return 0;
