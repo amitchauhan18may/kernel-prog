@@ -131,7 +131,6 @@ void pop_on_position (struct node **head, int pos) {
 
 }
 
-
 void reverse_linklist (struct node **head) {
 
     printf("Reversing LinkList\n");
@@ -179,6 +178,27 @@ void recursive_reverse_linklist (struct node **head) {
 
 }
 
+void get_nth_node_from_end (struct node **node, int n) {
+
+    static int i = 0;
+    struct node *temp = *node;
+
+    if (NULL == temp) {
+        return;
+    }
+
+    get_nth_node_from_end(&(temp->next), n);
+    if (++i == n) {
+        printf("Data: %d\n", temp->data);
+        return;
+    } else if (i > n) {
+        printf("No Data found\n");
+        return;
+    }
+
+    return;
+}
+
 int main (void) {
 
     struct node *head   = NULL;
@@ -217,6 +237,8 @@ int main (void) {
 
     recursive_reverse_linklist(&head);
     print_list(head);
+
+    get_nth_node_from_end(&head, 3);
 
     return 0;
 
