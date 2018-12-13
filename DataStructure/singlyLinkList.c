@@ -180,44 +180,46 @@ void recursive_reverse_linklist (struct node **head) {
 
 void get_nth_node_from_end (struct node **node, int n) {
 
-    static int i = 0;
+    static int i, total_nodes;
     struct node *temp = *node;
 
     if (NULL == temp) {
+
+        if (n > total_nodes) {
+            printf("Getting %dth node from End > TotalNodes: %d\n",
+                    n, total_nodes);
+            return;
+        }
+    
         return;
+
+    } else {
+        total_nodes++;
     }
 
     get_nth_node_from_end(&(temp->next), n);
+
+
     if (++i == n) {
-        printf("Data: %d\n", temp->data);
-        return;
-    } else if (i > n) {
-        printf("No Data found\n");
+        printf("Getting %dth Node from End: [%d]\n", n, temp->data);
         return;
     }
 
     return;
+
 }
 
 int main (void) {
 
     struct node *head   = NULL;
-    struct node *second = NULL;
-    struct node *third  = NULL;
 
-    head   = (struct node *) malloc(sizeof(struct node));
-    second = (struct node *) malloc(sizeof(struct node));
-    third  = (struct node *) malloc(sizeof(struct node));
+    push_on_front(&head, 3);
+    print_list(head);
 
-    head->data = 1;
-    head->next = second;
+    push_on_front(&head, 2);
+    print_list(head);
 
-    second->data = 2;
-    second->next = third;
-
-    third->data = 3;
-    third->next = NULL;
-
+    push_on_front(&head, 1);
     print_list(head);
 
     push_on_front(&head, 4);
@@ -238,7 +240,7 @@ int main (void) {
     recursive_reverse_linklist(&head);
     print_list(head);
 
-    get_nth_node_from_end(&head, 3);
+    get_nth_node_from_end(&head, 5);
 
     return 0;
 
