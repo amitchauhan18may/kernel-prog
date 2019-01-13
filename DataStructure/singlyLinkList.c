@@ -131,25 +131,95 @@ void pop_on_position (struct node **head, int pos) {
 
 }
 
+void reverse_linklist (struct node **head) {
+
+    printf("Reversing LinkList\n");
+
+    struct node *prev = NULL;
+    struct node *next = NULL;
+    struct node *current = *head;
+
+    while (NULL != current) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    *head = prev;
+
+    return;
+
+}
+
+void recursive_reverse_linklist (struct node **head) {
+
+    if (NULL == *head) {
+        printf("Empty LinkList\n");
+        return;
+    }
+
+    struct node *first = *head;
+    struct node *rest  = first->next;
+
+    if (NULL == rest) {
+        printf("Reversing LinkList using recursion\n");
+        return;
+    }
+
+    recursive_reverse_linklist(&rest);
+
+    first->next->next = first;
+    first->next = NULL;
+
+    *head = rest;
+
+    return;
+
+}
+
+void get_nth_node_from_end (struct node **node, int n) {
+
+    static int i, total_nodes;
+    struct node *temp = *node;
+
+    if (NULL == temp) {
+
+        if (n > total_nodes) {
+            printf("Getting %dth node from End > TotalNodes: %d\n",
+                    n, total_nodes);
+            return;
+        }
+    
+        return;
+
+    } else {
+        total_nodes++;
+    }
+
+    get_nth_node_from_end(&(temp->next), n);
+
+
+    if (++i == n) {
+        printf("Getting %dth Node from End: [%d]\n", n, temp->data);
+        return;
+    }
+
+    return;
+
+}
+
 int main (void) {
 
     struct node *head   = NULL;
-    struct node *second = NULL;
-    struct node *third  = NULL;
 
-    head   = (struct node *) malloc(sizeof(struct node));
-    second = (struct node *) malloc(sizeof(struct node));
-    third  = (struct node *) malloc(sizeof(struct node));
+    push_on_front(&head, 3);
+    print_list(head);
 
-    head->data = 1;
-    head->next = second;
+    push_on_front(&head, 2);
+    print_list(head);
 
-    second->data = 2;
-    second->next = third;
-
-    third->data = 3;
-    third->next = NULL;
-
+    push_on_front(&head, 1);
     print_list(head);
 
     push_on_front(&head, 4);
@@ -163,6 +233,14 @@ int main (void) {
 
     pop_on_position(&head, 0);
     print_list(head);
+
+    reverse_linklist(&head);
+    print_list(head);
+
+    recursive_reverse_linklist(&head);
+    print_list(head);
+
+    get_nth_node_from_end(&head, 5);
 
     return 0;
 
