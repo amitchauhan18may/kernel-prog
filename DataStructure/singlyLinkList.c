@@ -190,7 +190,7 @@ void get_nth_node_from_end (struct node **node, int n) {
                     n, total_nodes);
             return;
         }
-    
+
         return;
 
     } else {
@@ -207,6 +207,23 @@ void get_nth_node_from_end (struct node **node, int n) {
 
     return;
 
+}
+
+void get_middle_of_linklist (struct node **head) {
+
+    printf("Getting middle of linklist\n");
+
+    struct node *slow_ptr, *fast_ptr;
+
+    slow_ptr = fast_ptr = *head;
+
+    while ((NULL != fast_ptr) && (NULL != fast_ptr->next)) {
+        slow_ptr = slow_ptr->next;
+        fast_ptr = fast_ptr->next->next;
+    }
+
+    if (NULL != slow_ptr)
+        printf("Mid-Node [%d]\n", slow_ptr->data);
 }
 
 int main (void) {
@@ -231,8 +248,11 @@ int main (void) {
     push_on_nth (&head, 112, 3);
     print_list(head);
 
-    pop_on_position(&head, 0);
+    push_on_nth (&head, 12, 3);
     print_list(head);
+
+//    pop_on_position(&head, 0);
+//    print_list(head);
 
     reverse_linklist(&head);
     print_list(head);
@@ -241,6 +261,8 @@ int main (void) {
     print_list(head);
 
     get_nth_node_from_end(&head, 5);
+
+    get_middle_of_linklist(&head);
 
     return 0;
 
