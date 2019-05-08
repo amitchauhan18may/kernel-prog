@@ -250,6 +250,16 @@ void delete_linklist (struct node **head) {
 
 }
 
+int get_linklist_length (struct node *head) {
+
+    if(NULL == head)
+        return 0;
+
+    return 1 + get_linklist_length(head->next);
+
+}
+
+
 int main (void) {
 
     struct node *head   = NULL;
@@ -278,9 +288,10 @@ int main (void) {
     pop_on_position(&head, 0);
     print_list(head);
 
-    delete_linklist(&head);
-    print_list(head);
-    delete_linklist(&head);
+    printf("List Count: %d\n", get_linklist_length(head));
+//    delete_linklist(&head);
+//    print_list(head);
+//    delete_linklist(&head);
 //    reverse_linklist(&head);
 //    print_list(head);
 //
