@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct node {
     int data;
@@ -259,6 +260,17 @@ int get_linklist_length (struct node *head) {
 
 }
 
+bool search_key_in_linklist (struct node *head, int key) {
+
+    if (NULL == head)
+        return false;
+
+    if (key == head->data)
+        return true;
+
+    return search_key_in_linklist(head->next, key);
+
+}
 
 int main (void) {
 
@@ -289,6 +301,10 @@ int main (void) {
     print_list(head);
 
     printf("List Count: %d\n", get_linklist_length(head));
+    if(search_key_in_linklist(head, 525))
+        printf("Key found!\n");
+    else
+        printf("No key found!\n");
 //    delete_linklist(&head);
 //    print_list(head);
 //    delete_linklist(&head);
