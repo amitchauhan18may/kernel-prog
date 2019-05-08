@@ -77,7 +77,7 @@ int main (void) {
     push_stack(stk, 1);
     push_stack(stk, 2);
     push_stack(stk, 2);
-    
+
     pop_stack(stk, &data);
     printf("Poped data: %d\n", data);
 
