@@ -226,6 +226,30 @@ void get_middle_of_linklist (struct node **head) {
         printf("Mid-Node [%d]\n", slow_ptr->data);
 }
 
+void delete_linklist (struct node **head) {
+
+    printf("%s\n", __func__);
+
+    struct node *current = *head;
+    struct node *next    =  NULL;
+
+    if (NULL == *head) {
+        printf("No node to delete in linklist\n");
+        return;
+    }
+
+    while (NULL != current) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    *head = current;
+
+    return;
+
+}
+
 int main (void) {
 
     struct node *head   = NULL;
@@ -251,18 +275,21 @@ int main (void) {
     push_on_nth (&head, 12, 3);
     print_list(head);
 
-//    pop_on_position(&head, 0);
+    pop_on_position(&head, 0);
+    print_list(head);
+
+    delete_linklist(&head);
+    print_list(head);
+    delete_linklist(&head);
+//    reverse_linklist(&head);
 //    print_list(head);
-
-    reverse_linklist(&head);
-    print_list(head);
-
-    recursive_reverse_linklist(&head);
-    print_list(head);
-
-    get_nth_node_from_end(&head, 5);
-
-    get_middle_of_linklist(&head);
+//
+//    recursive_reverse_linklist(&head);
+//    print_list(head);
+//
+//    get_nth_node_from_end(&head, 5);
+//
+//    get_middle_of_linklist(&head);
 
     return 0;
 
