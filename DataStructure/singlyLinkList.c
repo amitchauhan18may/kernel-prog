@@ -251,6 +251,29 @@ void delete_linklist (struct node **head) {
 
 }
 
+void recursive_delete_linklist (struct node **head_ref, struct node *head) {
+
+    struct node *current = head;
+    struct node *next    = current->next;
+
+    if (NULL == next)
+        return;
+
+    recursive_delete_linklist(head_ref, next);
+
+    current->next = next->next;
+    printf("Freeing      <%d>\n", next->data);
+    free(next);
+
+    if (current == *head_ref) {
+        printf("freeing head <%d>\n", current->data);
+        *head_ref = current->next;
+        free(current);
+    }
+
+    return;
+}
+
 int get_linklist_length (struct node *head) {
 
     if(NULL == head)
@@ -300,11 +323,13 @@ int main (void) {
     pop_on_position(&head, 0);
     print_list(head);
 
-    printf("List Count: %d\n", get_linklist_length(head));
-    if(search_key_in_linklist(head, 525))
-        printf("Key found!\n");
-    else
-        printf("No key found!\n");
+    recursive_delete_linklist(&head, head);
+    print_list(head);
+//    printf("List Count: %d\n", get_linklist_length(head));
+//    if(search_key_in_linklist(head, 525))
+//        printf("Key found!\n");
+//    else
+//        printf("No key found!\n");
 //    delete_linklist(&head);
 //    print_list(head);
 //    delete_linklist(&head);
