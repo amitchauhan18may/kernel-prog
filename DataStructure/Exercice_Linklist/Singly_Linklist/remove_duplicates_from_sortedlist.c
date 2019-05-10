@@ -70,35 +70,20 @@ void push_on_end (struct node **head, int data) {
 void remove_duplicates (struct node **head) {
 
     struct node *temp = *head;
-    struct node *next = temp->next;
+    struct node *next;
 
-    while (NULL != next->next) {
+    while (NULL != temp->next) {
 
-        if (temp->data == next->data) {
-            printf("\ncurrent <%d> | Next <%d>\n", temp->data, next->data);
-            temp->next = next->next;
-            printf("Freeing data: <%d>\n", next->data);
-            free(next);
-            next = temp->next;
-            printf("After Freeing data:\n");
-            printf("current <%d> | Next <%d>\n", temp->data, next->data);
+        if (temp->data == temp->next->data) {
+            next = temp->next->next;
+            free(temp->next);
+            temp->next = next;
         } else {
             printf("\ncurrent != Next\n");
             temp = temp->next;
-            next = temp->next;
-            printf("current <%d> | Next <%d>\n", temp->data, next->data);
         }
 
     }/*Loop End*/
-
-    if (temp->data == next->data) {
-            printf("\ncurrent <%d> | Next <%d>\n", temp->data, next->data);
-            temp->next = next->next;
-            printf("Freeing data: <%d>\n", next->data);
-            free(next);
-            printf("After Freeing data:\n");
-            printf("current <%d> | Next <%d>\n", temp->data, next->data);
-    }
 
     return;
 }
