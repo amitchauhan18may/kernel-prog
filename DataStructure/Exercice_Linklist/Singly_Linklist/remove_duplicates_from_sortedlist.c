@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*Linklist Node*/
 struct node {
     int data;
     struct node *next;
 };
+
 
 void print_list (struct node *head) {
 
@@ -23,6 +25,7 @@ void print_list (struct node *head) {
 
 }
 
+
 void push_on_front (struct node **head, int data) {
 
     printf("Pushing node at Front with Data:[%d]\n", data);
@@ -36,6 +39,7 @@ void push_on_front (struct node **head, int data) {
     return;
 
 }
+
 
 void push_on_end (struct node **head, int data) {
 
@@ -62,18 +66,38 @@ void push_on_end (struct node **head, int data) {
 
 }
 
+
 void remove_duplicates (struct node **head) {
 
     struct node *temp = *head;
     struct node *next = temp->next;
 
-    while (NULL != temp) {
+    while (NULL != next->next) {
+
         if (temp->data == next->data) {
+            printf("\ncurrent <%d> | Next <%d>\n", temp->data, next->data);
             temp->next = next->next;
+            printf("Freeing data: <%d>\n", next->data);
             free(next);
             next = temp->next;
+            printf("After Freeing data:\n");
+            printf("current <%d> | Next <%d>\n", temp->data, next->data);
+        } else {
+            printf("\ncurrent != Next\n");
+            temp = temp->next;
+            next = temp->next;
+            printf("current <%d> | Next <%d>\n", temp->data, next->data);
         }
-        temp = temp->next;
+
+    }/*Loop End*/
+
+    if (temp->data == next->data) {
+            printf("\ncurrent <%d> | Next <%d>\n", temp->data, next->data);
+            temp->next = next->next;
+            printf("Freeing data: <%d>\n", next->data);
+            free(next);
+            printf("After Freeing data:\n");
+            printf("current <%d> | Next <%d>\n", temp->data, next->data);
     }
 
     return;
@@ -87,12 +111,15 @@ int main (void) {
     push_on_front(&head, 1);
     push_on_front(&head, 1);
     push_on_front(&head, 1);
+    push_on_front(&head, 1);
     push_on_end(&head, 5);
     push_on_end(&head, 6);
+    push_on_end(&head, 9);
     push_on_end(&head, 9);
 
     print_list(head);
     remove_duplicates(&head);
     print_list(head);
     return 0;
+
 }
