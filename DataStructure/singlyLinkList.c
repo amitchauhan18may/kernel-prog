@@ -210,6 +210,7 @@ void get_nth_node_from_end (struct node **node, int n) {
 
 }
 
+
 void get_middle_of_linklist (struct node **head) {
 
     printf("Getting middle of linklist\n");
@@ -225,6 +226,27 @@ void get_middle_of_linklist (struct node **head) {
 
     if (NULL != slow_ptr)
         printf("Mid-Node [%d]\n", slow_ptr->data);
+}
+
+void get_middle_single_pointer (struct node *head) {
+
+    struct node *mid = head;
+    int count        = 0;
+
+    while (NULL != head) {
+
+        if (count & 1)
+            mid = mid->next;
+
+        count++;
+        head = head->next;
+    }
+
+    if (NULL != mid)
+        printf("Mid Data: %d\n", mid->data);
+
+
+    return;
 }
 
 void delete_linklist (struct node **head) {
@@ -317,14 +339,16 @@ int main (void) {
     push_on_nth (&head, 112, 3);
     print_list(head);
 
-    push_on_nth (&head, 12, 3);
-    print_list(head);
-
+//    push_on_nth (&head, 12, 3);
+//    print_list(head);
+//
     pop_on_position(&head, 0);
     print_list(head);
 
-    recursive_delete_linklist(&head, head);
-    print_list(head);
+//    recursive_delete_linklist(&head, head);
+//    print_list(head);
+//
+    get_middle_single_pointer(head);
 //    printf("List Count: %d\n", get_linklist_length(head));
 //    if(search_key_in_linklist(head, 525))
 //        printf("Key found!\n");
