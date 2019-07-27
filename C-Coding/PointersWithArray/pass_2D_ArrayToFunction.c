@@ -6,7 +6,7 @@ void disp_2_d_array_1 (int (*p)[4], int row, int column) {
     int *q;
 
     for (i = 0; i < row; i++) {
-        q = p + i;
+        q = (int *)p + i;
 
         for (j = 0; j < column; j++) {
             printf("%d, ", *(q + j));
@@ -61,7 +61,7 @@ int main (void) {
                      5, 6, 7, 8
                    };
 
-    disp_2_d_array_2(arr, 2, 4);
+    disp_2_d_array_1(arr, 2, 4);
 
     return 0;
 

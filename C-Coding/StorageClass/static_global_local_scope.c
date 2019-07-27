@@ -4,7 +4,7 @@
      printf("func: %d\n", g_val);
  *
  */
-//static int g_val = 66;
+static int g_val = 66;
 
 void func(void);
 
@@ -22,7 +22,8 @@ int main (void) {
 }
 
 void func (void) {
-
+    static int i;
+    printf("i = %d\n", ++i);
     printf("func: %d\n", g_val);
     printf("func: %p\n", &g_val);
     return;

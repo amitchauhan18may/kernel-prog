@@ -28,7 +28,7 @@ void print_3d_array_func2 (int (*p)[3][4], int a, int b, int c) {
     int *q;
 
     for (i = 0; i < a; i++) {
-        q = p + i;
+        q = (int *)p + i;
 
         for (j = 0; j < b; j++) {
             for (k = 0; k < c; k++) {
@@ -81,7 +81,8 @@ int main () {
                         }
                      };
 
-    print_3d_array_func1(a, 2, 3, 4);
+    //print_3d_array_func1((int *)a, 2, 3, 4);
+    print_3d_array_func2(a, 2, 3, 4);
 
     return 0;
 }

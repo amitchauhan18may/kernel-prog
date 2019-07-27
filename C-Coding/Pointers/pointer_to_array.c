@@ -10,7 +10,7 @@ int main (void) {
     int (*ptr)[5];
     int arr[5];
 
-    p = arr;
+    p = (int *)&arr;
     ptr = &arr;
 
     printf("\np: %p  | ptr: %p\n", p, ptr);

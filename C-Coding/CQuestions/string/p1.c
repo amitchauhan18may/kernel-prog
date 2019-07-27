@@ -1,4 +1,4 @@
-#include<dos.h>
+//#include<dos.h>
 #include<stdio.h>
 int main(){
 union REGS i,o;
