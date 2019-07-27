@@ -1,0 +1,12 @@
+What are the differences between compile time, load time and run time?
+5 Answers
+Bhumika Keyur Shah
+Bhumika Keyur Shah, A human first!
+Answered Apr 20, 2016
+Compiler is a language translator that converts program from source language to target language. Also it reports errors encountered while translating. This whole process of translation+error reporting is performed in 6 phases(subroutines/sub programs). Time taken for converting program from source language program to assembly/relocatable machine program is called compile time. In short time taken to conver input file to .obje file.
+
+After compilation linker and loader converst relocatable machine code to absolute machinecode by loading it to main memory and linking necessary headers. This time talen to convert relocatable machine code to absolute machine code is called load time. In short time to conver .obj to .exe is load time.
+
+Once .exe file is created, means absolute machine code is ready, we execute program. At that time actual calculations take place, user may provide data and that data may b manipulated and output will be printed. This time is called execution time. 
+
+
