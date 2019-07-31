@@ -8,7 +8,7 @@ union union1 {
 
 union union2 {
     int a[50];/*Maximum size of union member 4 x 50 = 200*/
-    double d;
+    double d;/*Padding will be done on the basis of max of datatype*/
 };
 
 
