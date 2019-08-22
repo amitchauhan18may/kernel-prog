@@ -63,7 +63,7 @@ void get_linklists_merge_point (struct node *head1, struct node *head2) {
         temp1 = temp1->next;
         temp2 = temp2->next;
     }
-   
+
     if ((NULL == temp1->next) || (NULL == temp2->next))
         printf("There is no merge point\n");
     else
@@ -89,7 +89,7 @@ int main (void) {
     push_on_front(&head2, 4);
 
 /* Merging second linklist */
-    head2->next->next = head1->next->next->next; 
+    head2->next->next = head1->next->next->next;
 
     get_linklists_merge_point(head1, head2);
 
