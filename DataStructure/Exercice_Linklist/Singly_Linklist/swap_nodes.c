@@ -59,15 +59,15 @@ int swap_nodes (node **head, int key1, int key2) {
         currY = currY->next;
     }
 
-    if (!currX || !currY)
+    if (currX == NULL || currY == NULL)
         return 0;
 
-    if (currX != NULL)
+    if (prevX != NULL)
         prevX->next = currY;
     else
         *head = currY;
 
-    if (currY != NULL)
+    if (prevY != NULL)
         prevY->next = currX;
     else
         *head = currX;
