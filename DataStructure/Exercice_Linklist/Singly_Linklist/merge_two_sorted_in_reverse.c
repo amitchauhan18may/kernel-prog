@@ -86,20 +86,20 @@ int main (void) {
     node *head2 = NULL;
     node *res   = NULL;
 
-    push_on_front(&head1, 2);
-    push_on_front(&head1, 10);
-    push_on_front(&head1, 21);
-    push_on_front(&head1, 22);
-    push_on_front(&head1, 44);
     push_on_front(&head1, 90);
+    push_on_front(&head1, 44);
+    push_on_front(&head1, 22);
+    push_on_front(&head1, 21);
+    push_on_front(&head1, 10);
+    push_on_front(&head1, 2);
 
     print_list(head1);
 
-    push_on_front(&head2, 1);
-    push_on_front(&head2, 2);
-    push_on_front(&head2, 4);
-    push_on_front(&head2, 8);
     push_on_front(&head2, 9);
+    push_on_front(&head2, 8);
+    push_on_front(&head2, 4);
+    push_on_front(&head2, 2);
+    push_on_front(&head2, 1);
 
     print_list(head2);
 
