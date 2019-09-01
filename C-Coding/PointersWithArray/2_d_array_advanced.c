@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main (void) {
-
+/*Array is pointer to an Array of five elements of type integer pointers*/
     int* (*array)[5];
     int *arr_of_pointers[5]; 
     int arr1[] = {1,  2};
