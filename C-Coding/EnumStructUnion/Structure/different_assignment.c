@@ -15,12 +15,21 @@ int main (void) {
         .age       = 29,
         .salary_pm = 150000.5
     };
+
+    struct details my_detail1 = {
+        name:       "Amit Chauhan",
+        age:        29,
+        salary_pm:  150000.5,
+    };
 #else
 /*Initializer list initialization of structure*/
     struct details my_detail = {"Amit Chauhan", 29, 150000.5};
 #endif
     printf("Details:\nName: %s\nAge: %d\nSalary/Month: %f\n",
             my_detail.name, my_detail.age, my_detail.salary_pm);
+
+    printf("Details:\nName1: %s\nAge1: %d\nSalary/Month1: %f\n",
+            my_detail1.name, my_detail1.age, my_detail1.salary_pm);
 
 
 /*Assignment and comparision between two objects of same structure*/
