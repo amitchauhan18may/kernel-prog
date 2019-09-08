@@ -1,4 +1,4 @@
-obj-m += chardev.o
+obj-m += module_param.o
 all:
 	make -C /lib/modules/${shell uname -r}/build M=${PWD}
 module_install:
