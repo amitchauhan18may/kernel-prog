@@ -1,3 +1,4 @@
+#include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
 #include <linux/proc_fs.h>
@@ -67,3 +68,7 @@ void exit_proc (void) {
 
 	return;
 }
+
+MODULE_AUTHOR ("Amit Chauhan");
+MODULE_DESCRIPTION ("Test character driver module");
+MODULE_LICENSE ("GPL");
