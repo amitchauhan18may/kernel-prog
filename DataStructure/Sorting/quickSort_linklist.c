@@ -64,8 +64,9 @@ node *partition (node **head, node **tail, node **new_head, node **new_tail) {
                 *new_head = curr;
             prev = curr;
             curr = curr->next;
-        
         } else {
+                if (prev)
+                    prev->next = curr->next;
             node *temp = curr->next;
             curr->next = NULL;
             end->next = curr;
@@ -74,24 +75,29 @@ node *partition (node **head, node **tail, node **new_head, node **new_tail) {
         }
     }
 
+    if (*new_head == NULL)
+        *new_head = pivot;
+
+    *new_tail = end;
+
+    return pivot;
 }
 
 
-void quick_sort_recur (node **head, node **tail) {
+node *quick_sort_recur (node **head, node **tail) {
 
     if (!*head || *head == *tail)
-        return;
+        return NULL;
 
     node *new_head = NULL;
     node *new_tail = NULL;
 
     node *pivot = partition(head, tail, &new_head, &new_tail);
-
     if (new_head != pivot) {
         node *temp = new_head;
-
-        while (temp->next != pivot)
+        while (temp->next != pivot) {
             temp = temp->next;
+        }
 
         temp->next = NULL;
 
@@ -100,13 +106,21 @@ void quick_sort_recur (node **head, node **tail) {
         temp = get_tail(&new_head);
 
         temp->next = pivot;
-    
     }
 
-    quick_sort_recur(&(pivot->next), &new_tail);
+    pivot->next = quick_sort_recur(&(pivot->next), &new_tail);
 
+
+    return new_head;
+
+}
+
+
+void quickSort(node **headRef)
+{
+    node *tail = get_tail(headRef);
+    (*headRef) = quick_sort_recur(headRef, &tail);
     return;
-
 }
 
 
@@ -125,13 +139,8 @@ int main (void) {
 
     print_list(head);
 
-    node *tail = get_tail(&head);
-
-    if (tail)
-        printf("tail: %d\n", tail->data);
-
-    quick_sort_recur(&head, &tail);
-
+    quickSort(&head);
+    printf("Main:\n");
     print_list(head);
 
     return 0;
