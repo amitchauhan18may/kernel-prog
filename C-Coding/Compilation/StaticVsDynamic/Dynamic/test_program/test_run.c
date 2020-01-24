@@ -2,6 +2,6 @@
 #include "../test.h"
 
 int main () {
-    my_test_func();
+   printf("%p\n", my_test_func);
     return 0;
 }
