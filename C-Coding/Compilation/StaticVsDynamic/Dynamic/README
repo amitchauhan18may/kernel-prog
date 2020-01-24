@@ -1,0 +1,5 @@
+/*Compile library*/
+gcc -shared -fPIC -o liblibrary.so test.c
+
+/*Compile Test App*/
+gcc application.c -L /home/geetanjali/coding/ -llibrary -o sample
