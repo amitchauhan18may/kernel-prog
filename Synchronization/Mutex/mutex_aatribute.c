@@ -11,6 +11,7 @@ void *func () {
 
     int i;
     pthread_mutex_lock(&mutex);
+    pthread_mutex_lock(&mutex);
     printf("%d-Thread stared\n", pthread_self());
     for (i = 0; i < 0xFFFFFFFF; i++);
     printf("%d-Thread Counter: %d\n", pthread_self(), ++counter);
