@@ -12,7 +12,7 @@ void *func () {
     int i;
     pthread_mutex_lock(&mutex);
     printf("%d-Thread stared\n", pthread_self());
-    for (i = 0; i < 0xFFFFFFFF; i++);
+    for (i = 0; i < 0xFFFFFF; i++);
     printf("%d-Thread Counter: %d\n", pthread_self(), ++counter);
     pthread_mutex_unlock(&mutex);
     printf("%d-Thread Exited\n", pthread_self());
