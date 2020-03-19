@@ -13,15 +13,15 @@ struct kobject *sys_koj;
 
 static ssize_t sysfs_show(struct kobject *kobj, struct kobj_attribute *kobj_attr, char *buf)
 {
-	pr_info("sysfs_show value:\n");
+	pr_info("sysfs_show value: %d\n", sys_val);
 
-	return sprintf(buf, "%d", sys_val);
+	return sprintf(buf, "%d\n", sys_val);
 }
 
 static ssize_t sysfs_store(struct kobject *kobj, struct kobj_attribute *kobj_attr, const char *buf, size_t count)
 {
-	pr_info("sysfs_show value\n");
-	sscanf(buf, "%d", &sys_val);
+	sscanf(buf, "%d\n", &sys_val);
+	pr_info("sysfs_store value: %d\n", sys_val);
 	return count;
 }
 
