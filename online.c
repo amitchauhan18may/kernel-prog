@@ -23,7 +23,8 @@ int parser_online (void) {
         if ((sockfd = socket(google_ent->h_addrtype,SOCK_STREAM,IPPROTO_TCP)) != -1) {
             val = 1;
             printf("Opened socket\n");
-            if (setsockopt(sockfd,SOL_SOCKET,SO_REUSEADDR, (char *) &val, sizeof(val)) == 0 && 			                     setsockopt(sockfd,IPPROTO_TCP,TCP_NODELAY, (char *) &val, sizeof(val)) == 0) {
+            if (setsockopt(sockfd,SOL_SOCKET,SO_REUSEADDR, (char *) &val, sizeof(val)) == 0 &&
+                setsockopt(sockfd,IPPROTO_TCP,TCP_NODELAY, (char *) &val, sizeof(val)) == 0) {
                 google_addr.sin_family = google_ent->h_addrtype;
                 memcpy(&(google_addr.sin_addr), google_ent->h_addr, google_ent->h_length);
                 google_addr.sin_port = htons(80);

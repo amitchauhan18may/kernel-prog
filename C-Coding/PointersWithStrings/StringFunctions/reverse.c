@@ -10,9 +10,16 @@ char *reverse (char *str) {
     printf("%s: len: %d\n", __func__, len);
 
     while (i < j) {
+/*Reverse without third variable*/
+#if 1
+        str[i] ^= str[j];
+        str[j] ^= str[i];
+        str[i] ^= str[j];
+#else
         temp = str[i];
         str[i] = str[j];
         str[j] = temp;
+#endif
         i++;
         j--;
     }

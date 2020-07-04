@@ -14,7 +14,7 @@ int main() {
 
     scanf("%d", &j);
     scanf("%lf", &dd);
-    while ((getchar()) != '\n'); 
+    while ((getchar()) != '\n');
     while(1)
     {
         char ch = getchar();
@@ -23,7 +23,7 @@ int main() {
         else
             break;
     }
- 
+
     strncpy(strc, s, strlen(s));
     strcat(strc, str);
     len = strlen(strc);
@@ -32,6 +32,6 @@ int main() {
     printf("%d\n", i+j);
     printf("%0.1f\n", d + dd);
     printf("%s", strc);
-    
+
     return 0;
 }
