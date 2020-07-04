@@ -1,4 +1,31 @@
 #include <stdio.h>
+union u {
+    struct ss {
+        char s;
+        int v;
+    } xx;
+}xu;
+
+union {
+    char arr[sizeof (double) + 1];
+    double d;
+} pad;
+
+typedef union u_data
+{
+    struct {
+        char c;
+        int a;
+        int d;
+    } abc;
+    union {
+        int s;
+        int d;
+    }sd;
+    double f;
+    int elem;
+} my_data;
+
 
 union union1 {
     int a;/*Maximum size of union member = 4*/
@@ -15,5 +42,8 @@ union union2 {
 int main () {
     printf("Sizeof union1: %ld\n", sizeof(union union1));
     printf("Sizeof union2: %ld\n", sizeof(union union2));
+    printf("Sizeof union2: %ld\n", sizeof(my_data));
+    printf("Sizeof Pad2: %ld\n", sizeof(pad));
+    printf("Sizeof xu: %ld\n", sizeof(xu));
     return 0;
 }
