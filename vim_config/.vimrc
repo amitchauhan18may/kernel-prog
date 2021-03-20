@@ -1,5 +1,5 @@
 " Don't try to be vi compatible
-highlight OverLength ctermbg=red ctermfg=white guibg=#59292
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 set nocompatible
 
