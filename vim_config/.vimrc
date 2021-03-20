@@ -1,6 +1,9 @@
 " Don't try to be vi compatible
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
+if exists('&colorcolumn')
+    set colorcolumn=81
+endif
 set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below
@@ -36,7 +39,7 @@ set encoding=utf-8
 set wrap
 set textwidth=79
 set formatoptions=tcqrn1
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set softtabstop=2
 set expandtab
@@ -126,4 +129,3 @@ fun! TrimWhitespace()
 endfun
 
 command! TrimWhitespace call TrimWhitespace()
-
