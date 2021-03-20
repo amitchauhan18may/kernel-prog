@@ -1,0 +1,14 @@
+NOTE: Kindly make sure make/cc is installed on your system *
+I tested this code on ubuntu-18.04 64-bit machine  	   *
+************************************************************
+---------------------------
+Compile And Run Procedure:-
+---------------------------
+Run below command on linux terminal:
+1. make bluestack
+2. Above step will ganerate binary with name <bluestack>
+3. ./bluestack test-input
+Total number of libraries: 3
+test-input/libstlport_shared.so	: x86-32
+test-input/libphotoeffect	: arm-32
+test-input/libBreakpad.so	: arm-32
