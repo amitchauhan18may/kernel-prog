@@ -1,9 +1,8 @@
 " Don't try to be vi compatible
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
-if exists('&colorcolumn')
-    set colorcolumn=81
-endif
+
+"if exists('&colorcolumn')
+"    set colorcolumn=81
+"endif
 set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below
@@ -121,7 +120,6 @@ highlight ws ctermbg=yellow guibg=yellow
 match ws /\s\+$/
 autocmd BufWinEnter * match ws / \+$/
 
-
 fun! TrimWhitespace()
   let l:save = winsaveview()
   %s/\s\+$//e
@@ -129,3 +127,10 @@ fun! TrimWhitespace()
 endfun
 
 command! TrimWhitespace call TrimWhitespace()
+
+fun! SetMaxCodeCoulmn()
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%80v.\+/
+endfun
+
+command! SetMaxCodeCoulmn call SetMaxCodeCoulmn()
